@@ -8,6 +8,7 @@
   align-items: center;
   height: 60vh;
   position: relative;
+  row-gap: 2rem;
 }
 
 #myVideo {

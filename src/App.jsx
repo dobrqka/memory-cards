@@ -13,6 +13,13 @@ function App() {
       clicked: false,
     },
     { id: uuidv4(), search: "Lemon grab", text: "Lemongrab", clicked: false },
+    {
+      id: uuidv4(),
+      search: "Finn the human adventure time",
+      text: "Finn",
+      clicked: false,
+    },
+    { id: uuidv4(), search: "Jake the dog", text: "Jake", clicked: false },
   ]);
 
   const [score, setScore] = useState(0);
@@ -24,13 +31,7 @@ function App() {
         .map((card) => {
           return { ...card, clicked: false };
         })
-        .sort(() => {
-          let sortIndex = 0;
-          while (sortIndex == 0) {
-            sortIndex = Math.floor(Math.random() * 3 - 1);
-          }
-          return sortIndex;
-        })
+        .sort(() => Math.random() - 0.5)
     );
   };
 
@@ -53,28 +54,22 @@ function App() {
           return;
         } else {
           // set the card as clicked
-          const updatedCards = cards.map((card) => {
-            if (card.id == id) {
-              return { ...card, clicked: true };
-            } else {
-              return card;
-            }
-          });
+          const updatedCards = cards
+            .map((card) => {
+              if (card.id == id) {
+                return { ...card, clicked: true };
+              } else {
+                return card;
+              }
+            })
+            .sort(() => Math.random() - 0.5);
 
-          // randomize the order of the cards for the next render
-          let newOrder = updatedCards.sort(() => {
-            let sortIndex = 0;
-            while (sortIndex == 0) {
-              sortIndex = Math.floor(Math.random() * 3 - 1);
-            }
-            return sortIndex;
-          });
           // set score, high score and randomize cards order
           setScore(score + 1);
           if (highScore < score + 1) {
             setHighScore(score + 1);
           }
-          setCards([...newOrder]);
+          setCards([...updatedCards]);
         }
       }
     });
