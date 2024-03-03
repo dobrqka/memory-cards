@@ -15,9 +15,24 @@ function App() {
     { id: uuidv4(), search: "Lemon grab", text: "Lemongrab", clicked: false },
   ]);
 
-  const [randomizedCards, setRandomizedCards] = useState([...cards]);
   const [score, setScore] = useState(0);
   const [highScore, setHighScore] = useState(0);
+
+  const resetRandomize = () => {
+    setCards(
+      cards
+        .map((card) => {
+          return { ...card, clicked: false };
+        })
+        .sort(() => {
+          let sortIndex = 0;
+          while (sortIndex == 0) {
+            sortIndex = Math.floor(Math.random() * 3 - 1);
+          }
+          return sortIndex;
+        })
+    );
+  };
 
   const cardClick = (e, id) => {
     e.preventDefault();
@@ -26,38 +41,48 @@ function App() {
       if (card.id == id && card.clicked) {
         setScore(0);
         alert("You lose.");
+        resetRandomize();
         return;
       } else if (card.id == id) {
-        // set the card as clicked
-        setCards(
-          cards.map((card) => {
+        // if all the other cards are clicked - you win
+        if (score == cards.length - 1) {
+          alert("You win!");
+          setHighScore(cards.length);
+          setScore(0);
+          resetRandomize();
+          return;
+        } else {
+          // set the card as clicked
+          const updatedCards = cards.map((card) => {
             if (card.id == id) {
               return { ...card, clicked: true };
             } else {
               return card;
             }
-          })
-        );
-        // randomize the order of the cards for the next render
-        let newOrder = cards.sort(() => {
-          let sortIndex = 0;
-          while (sortIndex == 0) {
-            sortIndex = Math.floor(Math.random() * 3 - 1);
+          });
+
+          // randomize the order of the cards for the next render
+          let newOrder = updatedCards.sort(() => {
+            let sortIndex = 0;
+            while (sortIndex == 0) {
+              sortIndex = Math.floor(Math.random() * 3 - 1);
+            }
+            return sortIndex;
+          });
+          // set score, high score and randomize cards order
+          setScore(score + 1);
+          if (highScore < score + 1) {
+            setHighScore(score + 1);
           }
-          return sortIndex;
-        });
-        setScore(score + 1);
-        if (highScore < score + 1) {
-          setHighScore(score + 1);
+          setCards([...newOrder]);
         }
-        setRandomizedCards([...newOrder]);
       }
     });
   };
 
   return (
     <>
-      {randomizedCards.map((card) => {
+      {cards.map((card) => {
         return (
           <Card
             key={card.id}
@@ -80,11 +105,8 @@ function App() {
 
 export default App;
 
-// implement Winning condition - if all cards have been clicked
-// reset 'clicked' property to 'false' if the game is won or lost
-//
 // design:
-// - cool win/lose modals
 // - animation of turning cards
+// - cool win/lose modals
 // - 'start game' button
 // - difficulties
