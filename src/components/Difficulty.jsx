@@ -23,29 +23,17 @@ export function Difficulty({ startClick, changeDifficulty }) {
           value="easy "
           onClick={(e) => changeDifficulty(e)}
         >
-          <img
-            className="easy-image "
-            src="../../public/easy.webp"
-            alt="easy"
-          ></img>
+          <img className="easy-image " src="/easy.webp" alt="easy"></img>
         </label>
 
         <input type="radio" id="normal" name="difficulty"></input>
         <label htmlFor="normal" onClick={(e) => changeDifficulty(e)}>
-          <img
-            className="normal-image "
-            src="../../public/normal.webp"
-            alt="normal"
-          ></img>
+          <img className="normal-image " src="/normal.webp" alt="normal"></img>
         </label>
 
         <input type="radio" id="hard" name="difficulty"></input>
         <label htmlFor="hard" onClick={(e) => changeDifficulty(e)}>
-          <img
-            className="hard-image "
-            src="../../public/hard.webp"
-            alt="hard"
-          ></img>
+          <img className="hard-image " src="/hard.webp" alt="hard"></img>
         </label>
       </form>
       <button type="button" onClick={startClick}>

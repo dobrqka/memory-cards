@@ -4,7 +4,7 @@ export function Loss({ startClick, chooseDifficulty }) {
   return (
     <div className="loss modal">
       <h1>You lose.</h1>
-      <img src="../../public/loss.webp"></img>
+      <img src="/loss.webp"></img>
       <button type="button" onClick={startClick}>
         New Game
       </button>

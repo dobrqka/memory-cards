@@ -21,7 +21,7 @@ export function Card({ searchWord, text, cardClick, turning }) {
   return (
     <div className={"card" + (turning ? " turning" : "")} onClick={cardClick}>
       <div className="img-container">
-        <img src={imageUrl ? imageUrl : "../../public/loading2.gif"}></img>
+        <img src={imageUrl ? imageUrl : "/loading2.gif"}></img>
       </div>
       <p>{text}</p>
     </div>
