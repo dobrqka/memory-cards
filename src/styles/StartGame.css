@@ -1,0 +1,50 @@
+.modal {
+  background-color: white;
+  justify-self: center;
+  grid-column: 2 / 3;
+  padding: 2rem;
+  border-radius: 2rem;
+  font-family: "Quicksand", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 2rem;
+  opacity: 0.9;
+  position: relative;
+}
+
+.modal button {
+  border: none;
+  background-color: black;
+  color: white;
+  border-radius: 2rem;
+  padding: 0.5rem 1rem;
+  font-family: "Quicksand", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 900;
+  font-style: normal;
+  font-size: 1.75rem;
+}
+
+.modal button:hover {
+  background-color: rgb(105, 105, 105);
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
+.start-jake {
+  position: absolute;
+  width: 10rem;
+  top: 0;
+  left: 0;
+  transform: rotate(30deg);
+}
+
+.start-finn {
+  position: absolute;
+  width: 5rem;
+  bottom: 1rem;
+  right: 1rem;
+  transform: rotateY(180deg);
+  z-index: -1;
+}

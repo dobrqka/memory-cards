@@ -2,7 +2,7 @@ import "../styles/Card.css";
 import { useState } from "react";
 import { useEffect } from "react";
 
-export function Card({ searchWord, text, cardClick }) {
+export function Card({ searchWord, text, cardClick, turning }) {
   const [imageUrl, setImageUrl] = useState(null);
 
   useEffect(() => {
@@ -19,8 +19,10 @@ export function Card({ searchWord, text, cardClick }) {
   }, [searchWord]);
 
   return (
-    <div className="card" onClick={cardClick}>
-      <img src={imageUrl ? imageUrl : "../../public/loading2.gif"}></img>
+    <div className={"card" + (turning ? " turning" : "")} onClick={cardClick}>
+      <div className="img-container">
+        <img src={imageUrl ? imageUrl : "../../public/loading2.gif"}></img>
+      </div>
       <p>{text}</p>
     </div>
   );

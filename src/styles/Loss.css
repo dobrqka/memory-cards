@@ -1,0 +1,26 @@
+.loss {
+  opacity: 0.9;
+  display: flex;
+  flex-direction: column;
+}
+
+.loss img {
+  flex: 1;
+  left: 1rem;
+  justify-self: center;
+  align-self: center;
+  padding: 0;
+  margin: 0;
+  z-index: -1;
+}
+
+.loss h1 {
+  margin: 1rem;
+}
+
+.loss button {
+  margin: 0.25rem;
+  font-size: 1.75rem;
+  padding: 0.5rem;
+  font-weight: 900;
+}

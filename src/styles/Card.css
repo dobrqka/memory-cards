@@ -1,21 +1,38 @@
+.turning {
+  animation: turn 0.75s ease-in 1 normal;
+  animation-fill-mode: forwards;
+}
+
 .card {
-  width: 20vw;
-  height: 40vh;
+  justify-self: center;
+  width: 15vw;
+  height: 30vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: end;
   align-items: center;
   background-color: rgb(60, 54, 63);
   color: white;
-  border-radius: 2rem;
+  border-radius: 1rem;
+  border: 2px solid white;
+  visibility: hidden;
+}
+
+.img-container {
+  border-radius: 1rem;
+  border: 2px solid white;
+  width: 80%;
+  height: 50%;
 }
 
 .card img {
   width: 100%;
-  height: 75%;
-  object-fit: contain;
-  border-top-right-radius: 2rem;
-  border-top-left-radius: 2rem;
+  height: 100%;
+  object-fit: cover;
+  border-top-right-radius: 0.75rem;
+  border-top-left-radius: 0.75rem;
+  border-bottom-right-radius: 0.75rem;
+  border-bottom-left-radius: 0.75rem;
 }
 
 .card:hover {
@@ -23,10 +40,25 @@
   cursor: pointer;
 }
 
+.card:active {
+  transform: scale(0.95);
+  opacity: 0.9;
+}
+
 .card p {
   font-family: "Quicksand", sans-serif;
   font-optical-sizing: auto;
-  font-weight: 500;
+  font-weight: 900;
   font-style: normal;
-  font-size: 1.75rem;
+  font-size: 2rem;
+}
+
+@keyframes turn {
+  from {
+    transform: scale(0);
+  }
+  to {
+    visibility: visible;
+    transform: scale(1);
+  }
 }
