@@ -165,14 +165,14 @@ function App() {
           <div className="score-container">
             <p className="score">Score: {score}</p>
             <p className="high-score">High score: {highScore}</p>
-            <img className="glitch" src="../public/glitch.gif"></img>
+            <img className="glitch" src="/glitch.gif"></img>
           </div>
-          <img className="score-background" src="../public/scoreBoard.jpg" />
+          <img className="score-background" src="/scoreBoard.jpg" />
         </div>
       )}
 
       <video autoPlay muted loop id="myVideo">
-        <source src="../public/background3.mp4" type="video/mp4" />
+        <source src="/background3.mp4" type="video/mp4" />
       </video>
     </>
   );
