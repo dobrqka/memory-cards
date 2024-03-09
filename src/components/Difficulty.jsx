@@ -1,6 +1,6 @@
 import "../styles/Difficulty.css";
 
-export function Difficulty({ startClick, changeDifficulty }) {
+export function Difficulty({ startClick, changeDifficulty, difficulty }) {
   return (
     <div className="difficulty modal">
       <h1>Instructions:</h1>
@@ -29,9 +29,16 @@ export function Difficulty({ startClick, changeDifficulty }) {
           <img src="/hard.webp" alt="hard"></img>
         </label>
       </form>
-      <button type="button" onClick={startClick}>
-        Start Game
-      </button>
+
+      {difficulty === "undefined" ? (
+        <button type="button" onClick={startClick} className="hidden">
+          Start Game
+        </button>
+      ) : (
+        <button type="button" onClick={startClick}>
+          Start Game
+        </button>
+      )}
     </div>
   );
 }

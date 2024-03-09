@@ -6,60 +6,33 @@ import { Difficulty } from "./components/Difficulty.jsx";
 import { Card } from "./components/Card.jsx";
 import { Win } from "./components/Win.jsx";
 import { Loss } from "./components/Loss.jsx";
+import { allCards } from "./components/AllCards.jsx";
 
 function App() {
-  const startingCards = [
-    { id: 1, search: "Ice King", text: "Ice King", clicked: false },
-    {
-      id: 2,
-      search: "Prismo adventure time",
-      text: "Prismo",
-      clicked: false,
-    },
-    { id: 3, search: "Lemon grab", text: "Lemongrab", clicked: false },
-    {
-      id: 4,
-      search: "Finn the human adventure time",
-      text: "Finn",
-      clicked: false,
-    },
-    { id: 5, search: "Jake the dog", text: "Jake", clicked: false },
-    {
-      id: 6,
-      search: "Princess Bubblegum",
-      text: "P.B.",
-      clicked: false,
-    },
-    {
-      id: 7,
-      search: "Gunther penguin adventure time",
-      text: "Gunther",
-      clicked: false,
-    },
-  ];
+  const startingCards = allCards;
 
-  const [cards, setCards] = useState([...startingCards]);
-
-  const [turning, setTurning] = useState(false);
-  const [score, setScore] = useState(0);
-  const [highScore, setHighScore] = useState(0);
   const [gameState, setGameState] = useState("start");
   const [difficulty, setDifficulty] = useState("undefined");
+  const [turning, setTurning] = useState(false);
+  const [cards, setCards] = useState([...startingCards]);
+  const [score, setScore] = useState(0);
+  const [highScore, setHighScore] = useState(0);
+
+  const openDifficulty = () => {
+    setDifficulty("undefined");
+    setGameState("choose");
+  };
 
   const changeDifficulty = (e) => {
     setDifficulty(e.target.alt);
   };
 
-  const chooseDifficulty = () => {
-    setGameState("choose");
-  };
-
   const startClick = (difficulty) => {
     if (difficulty == "easy") {
-      setCards(startingCards.splice(-3));
+      setCards(startingCards.slice(-3));
       setGameState("ongoing");
     } else if (difficulty == "normal") {
-      setCards(startingCards.splice(-5));
+      setCards(startingCards.slice(-5));
       setGameState("ongoing");
     } else if (difficulty == "hard") {
       setCards(startingCards);
@@ -128,47 +101,48 @@ function App() {
   return (
     <>
       {gameState == "start" ? (
-        <StartGame startClick={chooseDifficulty}></StartGame>
+        <StartGame openDifficulty={openDifficulty}></StartGame>
       ) : gameState == "choose" ? (
         <Difficulty
           startClick={() => startClick(difficulty)}
           changeDifficulty={changeDifficulty}
+          difficulty={difficulty}
         ></Difficulty>
       ) : gameState == "loss" ? (
         <Loss
           startClick={() => startClick(difficulty)}
-          chooseDifficulty={chooseDifficulty}
+          openDifficulty={openDifficulty}
         ></Loss>
       ) : gameState == "win" ? (
         <Win
           startClick={() => startClick(difficulty)}
-          chooseDifficulty={chooseDifficulty}
+          openDifficulty={openDifficulty}
         ></Win>
-      ) : (
-        <div className="cards">
-          {cards.map((card) => {
-            return (
-              <Card
-                key={card.id}
-                searchWord={card.search}
-                text={card.text}
-                cardClick={(e) => cardClick(e, card.id)}
-                turning={turning}
-              ></Card>
-            );
-          })}
-        </div>
-      )}
-      {gameState == "ongoing" && (
-        <div className="score-board">
-          <div className="score-container">
-            <p className="score">Score: {score}</p>
-            <p className="high-score">High score: {highScore}</p>
-            <img className="glitch" src="/glitch.gif"></img>
+      ) : gameState == "ongoing" ? (
+        <>
+          <div className="cards">
+            {cards.map((card) => {
+              return (
+                <Card
+                  key={card.id}
+                  searchWord={card.search}
+                  text={card.text}
+                  cardClick={(e) => cardClick(e, card.id)}
+                  turning={turning}
+                ></Card>
+              );
+            })}
           </div>
-          <img className="score-background" src="/scoreBoard.jpg" />
-        </div>
-      )}
+          <div className="score-board">
+            <div className="score-container">
+              <p className="score">Score: {score}</p>
+              <p className="high-score">High score: {highScore}</p>
+              <img className="glitch" src="/glitch.gif"></img>
+            </div>
+            <img className="score-background" src="/scoreBoard.jpg" />
+          </div>
+        </>
+      ) : null}
 
       <video autoPlay muted loop id="myVideo">
         <source src="/background3.mp4" type="video/mp4" />
@@ -178,5 +152,3 @@ function App() {
 }
 
 export default App;
-
-// clean up code in App.jsx.

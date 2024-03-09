@@ -47,6 +47,10 @@
   transform: scaleX(-1);
 }
 
+.hidden {
+  visibility: hidden;
+}
+
 @media (max-width: 1000px) {
   .difficulty {
     padding: 0.75rem;
