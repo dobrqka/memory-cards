@@ -182,4 +182,4 @@ export default App;
 
 // design:
 //
-// - difficulties
+// - resize images and push to github
