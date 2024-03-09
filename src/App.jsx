@@ -180,6 +180,4 @@ function App() {
 
 export default App;
 
-// design:
-//
-// - responsive design - play screen mobile and tablet view
+// clean up code
