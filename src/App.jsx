@@ -1,12 +1,11 @@
 import "./App.css";
-import { Card } from "./components/Card.jsx";
-import { StartGame } from "./components/StartGame.jsx";
-import { Loss } from "./components/Loss.jsx";
-import { Win } from "./components/Win.jsx";
 import { useState } from "react";
 import { useEffect } from "react";
-import { v4 as uuidv4 } from "uuid";
+import { StartGame } from "./components/StartGame.jsx";
 import { Difficulty } from "./components/Difficulty.jsx";
+import { Card } from "./components/Card.jsx";
+import { Win } from "./components/Win.jsx";
+import { Loss } from "./components/Loss.jsx";
 
 function App() {
   const startingCards = [
@@ -180,4 +179,4 @@ function App() {
 
 export default App;
 
-// clean up code
+// clean up code in App.jsx.

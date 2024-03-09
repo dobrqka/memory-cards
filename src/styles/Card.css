@@ -6,7 +6,6 @@
 .card {
   justify-self: center;
   width: 15vw;
-  height: 30vh;
   display: flex;
   flex-direction: column;
   justify-content: end;
@@ -15,11 +14,12 @@
   color: white;
   border-radius: 1rem;
   border: 2px solid white;
+  opacity: 0.9;
   visibility: hidden;
 }
 
 .img-container {
-  border-radius: 1rem;
+  border-radius: 0.75rem;
   border: 2px solid white;
   width: 80%;
   height: 50%;
@@ -41,7 +41,6 @@
 }
 
 .card:active {
-  transform: scale(0.95);
   opacity: 0.9;
 }
 

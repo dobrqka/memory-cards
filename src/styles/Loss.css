@@ -1,6 +1,5 @@
 .loss {
   opacity: 0.9;
-  /* justify-self: stretch; */
   display: flex;
   flex-direction: column;
   margin: 2rem 0 2rem 0;
@@ -8,8 +7,6 @@
 
 .loss img {
   max-height: 350px;
-  flex: 1;
-  left: 1rem;
   justify-self: center;
   align-self: center;
   padding: 0;
