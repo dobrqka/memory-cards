@@ -38,6 +38,7 @@
   top: 0;
   left: 0;
   transform: rotate(30deg);
+  z-index: -1;
 }
 
 .start-finn {
@@ -47,4 +48,11 @@
   right: 1rem;
   transform: rotateY(180deg);
   z-index: -1;
+}
+
+@media (max-width: 1200px) {
+  .modal {
+    grid-column: span 3;
+    margin: 2rem;
+  }
 }

@@ -182,4 +182,4 @@ export default App;
 
 // design:
 //
-// - resize images and push to github
+// - responsive design - play screen mobile and tablet view
