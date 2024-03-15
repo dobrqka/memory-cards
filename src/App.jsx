@@ -24,7 +24,11 @@ function App() {
   };
 
   const changeDifficulty = (e) => {
-    setDifficulty(e.target.alt);
+    if (e.target.alt == undefined) {
+      setDifficulty(e.target.querySelector("img").alt);
+    } else {
+      setDifficulty(e.target.alt);
+    }
   };
 
   const startClick = (difficulty) => {
