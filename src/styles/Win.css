@@ -21,9 +21,9 @@
   }
 }
 
-@media (max-width: 500px) {
+@media (max-width: 600px) {
   .win {
-    margin: 1.25rem;
+    margin: 0.25rem;
     padding: 1.25rem;
   }
 }

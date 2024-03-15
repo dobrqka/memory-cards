@@ -59,6 +59,10 @@
 }
 
 @media (max-width: 600px) {
+  .difficulty {
+    margin: 0.25rem;
+  }
+
   .difficulty form {
     grid-template-columns: 1fr;
   }
