@@ -52,6 +52,7 @@
   font-weight: 900;
   font-style: normal;
   font-size: 1.75rem;
+  margin-bottom: 0.5rem;
 }
 
 @keyframes turn {
@@ -82,9 +83,16 @@
   .card {
     min-width: 120px;
     height: 20vh;
-    padding-top: 0.5rem;
+    padding-top: 0.25rem;
   }
   .card p {
     font-size: 1.25rem;
+    margin-bottom: 0.25rem;
+  }
+}
+
+@media (max-height: 700px) {
+  .card p {
+    margin-bottom: 0;
   }
 }
